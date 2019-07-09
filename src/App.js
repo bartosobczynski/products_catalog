@@ -1,10 +1,14 @@
 import React from 'react';
 import Header from './components/Header';
+import ProductsCatalog from './components/ProductsCatalog';
 
 class App extends React.Component {
   render() {
     return(
-      <Header/>
+      <div>
+        <Header/>
+        <ProductsCatalog/>
+      </div>
     )
   }
 }
