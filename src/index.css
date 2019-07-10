@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.pagination-controls {
+  display: inline-block;
+  float: left;
+}
+
+.pagination-controls__button {
+  background-color: white;
+  border-radius: 0.15em;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  cursor: default;
+  margin: 0 0.25em;
+  padding: 0.5em 0.75em;
+
+&:first-child {
+   margin-left: 0;
+ }
+
+&:last-child {
+   margin-right: 0;
+ }
+
+&:hover:not(:active) {
+   transition: transform 0.15s;
+   transform: translateY(-1px);
+ }
+}
+
+.pagination-controls__button--active {
+  background-color: #4D7EA8;
+  color: white;
+
+&:hover,
+&:hover:not(:active) {
+   transform: none;
+ }
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import Product from './Product';
+import Pagination from './Pagination'
+import Spinner from './Spinner'
 
 class ProductsList extends React.Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class ProductsList extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     axios.get(this.state.productListUrl)
       .then(res => {
         const products = res.data;
@@ -27,15 +29,19 @@ class ProductsList extends React.Component {
   render() {
     const products = this.state.products;
 
-    return(
-      <div className="container">
-        {
-          this.filteredProducts(products).map(product => (
-            <Product product={product} key={product.id}/>
-          ))
-        }
-      </div>
-    )
+    if (products.length === 0) {
+      return(
+        <Spinner />
+      )
+    } else {
+      return(
+        <div className="container">
+          <Pagination products={this.filteredProducts(products)}>
+            <Product />
+          </Pagination>
+        </div>
+      )
+    }
   }
 }
 
